@@ -22,7 +22,7 @@ Duration：动画的">
 
 Duration：动画的">
 <meta property="og:image" content="http://i4.tietuku.com/471264b04bca0abf.png">
-<meta property="og:updated_time" content="2016-01-10T12:01:48.036Z">
+<meta property="og:updated_time" content="2016-01-10T12:11:08.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Property Animation（属性动画）01篇 ObjectAnimator 动画类">
 <meta name="twitter:description" content="1. Android 中的动画之Property Animation（属性动画）1. 概述Property Animation 的框架弥补了View Animation的一些短板，我们可以借助属性动画完成一些复杂的动画效果，做出一些酷炫的UI交互。
@@ -143,28 +143,19 @@ Duration：动画的">
 <p>这篇先介绍 <code>ObjectAnimator</code> 动画执行类。</p>
 <p>再了解几个新加的属性：</p>
 <ul>
-<li><p><code>translationX 和 translationY</code>：这两个属性控制了View所处的位置，它们的值是由layout容器设置的，是相对于坐标原点（0，0左上角）的一个偏移量。</p>
-</li>
-<li><p><code>rotation, rotationX 和 rotationY</code>：控制View绕着轴点（pivotX和pivotY）旋转。</p>
-</li>
-<li><p><code>scaleX 和 scaleY</code>：控制View基于pivotX和pivotY的缩放。</p>
-</li>
-<li><p><code>pivotX 和 pivotY</code>：旋转的轴点和缩放的基准点，默认是View的中心点。</p>
-</li>
-<li><p><code>x 和 y</code>：描述了view在其父容器中的最终位置，是左上角左标和偏移量（translationX，translationY）的和。</p>
-</li>
-<li><p><code>aplha</code>：透明度，1是完全不透明，0是完全透明。</p>
-</li>
+<li><code>translationX 和 translationY</code>：这两个属性控制了View所处的位置，它们的值是由layout容器设置的，是相对于坐标原点（0，0左上角）的一个偏移量。</li>
+<li><code>rotation, rotationX 和 rotationY</code>：控制View绕着轴点（pivotX和pivotY）旋转。</li>
+<li><code>scaleX 和 scaleY</code>：控制View基于pivotX和pivotY的缩放。</li>
+<li><code>pivotX 和 pivotY</code>：旋转的轴点和缩放的基准点，默认是View的中心点。</li>
+<li><code>x 和 y</code>：描述了view在其父容器中的最终位置，是左上角左标和偏移量（translationX，translationY）的和。</li>
+<li><code>aplha</code>：透明度，1是完全不透明，0是完全透明。</li>
 </ul>
 <h2 id="3-__u4F7F_u7528"><a href="#3-__u4F7F_u7528" class="headerlink" title="3. 使用"></a>3. 使用</h2><h3 id="1-_XML_u4E2D_u5B9A_u4E49_u52A8_u753B_u6548_u679C"><a href="#1-_XML_u4E2D_u5B9A_u4E49_u52A8_u753B_u6548_u679C" class="headerlink" title="1. XML中定义动画效果"></a>1. XML中定义动画效果</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">objectAnimator</span> </span><br><span class="line">    <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span> </span><br><span class="line">    <span class="attribute">android:propertyName</span>=<span class="value">"scaleX"</span></span><br><span class="line">    <span class="attribute">android:duration</span>=<span class="value">"2000"</span></span><br><span class="line">    <span class="attribute">android:valueFrom</span>=<span class="value">"1.0"</span></span><br><span class="line">    <span class="attribute">android:valueTo</span>=<span class="value">"2.0"</span></span><br><span class="line">    <span class="attribute">android:repeatCount</span>=<span class="value">"1"</span></span><br><span class="line">    <span class="attribute">android:repeatMode</span>=<span class="value">"reverse"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">objectAnimator</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>在XML中要利用 <code>objectAnimator</code> 来定义我们的某个属性的效果，所以：</p>
 <ul>
-<li><p><code>propertyName</code> ： 理论上这个属性的值可以是对象中的任何有get/set方法的属性，不过我们这里是对View来说，所以一般而言，就是上面新加的那几种新属性了。</p>
-</li>
-<li><p><code>duration</code>： 持续时间</p>
-</li>
-<li><p><code>valueFrom 和 valueTo</code>：属性在动画开始和结束时相对应的值，如果我们是缩放的话，就代表倍数，如果是平移（Translation）的话，那么就代表距离了。</p>
-</li>
+<li><code>propertyName</code> ： 理论上这个属性的值可以是对象中的任何有get/set方法的属性，不过我们这里是对View来说，所以一般而言，就是上面新加的那几种新属性了。</li>
+<li><code>duration</code>： 持续时间</li>
+<li><code>valueFrom 和 valueTo</code>：属性在动画开始和结束时相对应的值，如果我们是缩放的话，就代表倍数，如果是平移（Translation）的话，那么就代表距离了。</li>
 </ul>
 <p>4）<code>repeatCount 和 repeatMode</code>：这两个和View Animation 中是一样的，就不多说了。</p>
 <p>在xml中定义好了之后，接下来就要在Java中调用了，如下：</p>
@@ -217,10 +208,13 @@ Duration：动画的">
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat(<span class="string">"translationX"</span>,<span class="number">0f</span>,<span class="number">300f</span>);</span><br><span class="line">PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat(<span class="string">"translationY"</span>,<span class="number">0f</span>,<span class="number">300f</span>);		</span><br><span class="line">ObjectAnimator translateAnimator = ObjectAnimator.ofPropertyValuesHolder(mView, pvhX, pvhY);</span><br><span class="line">translateAnimator.setDuration(<span class="number">2000</span>);</span><br><span class="line">translateAnimator.start();</span><br></pre></td></tr></table></figure>
 <p>1）我们可以通过 <code>PropertyValuesHolder</code> 类的工厂方法 <code>ofInt</code> ,  <code>ofFloat</code> 等方法，让它能够Hold住对应 property 的 value 。<br>2）在利用 <code>ObjectAnimator</code> 的 <code>ofPropertyValuesHolder</code> 方法时，再将我们上面定义的 <code>propertyValuesHolder</code> 给传进去，定义出一个 <code>objectAnimator</code>。<br>3）设置 <code>objectAnimator</code> 对应的属性，调用其 <code>start</code> 方法就行。</p>
 <h4 id="4-__u901A_u8FC7_ViewPropertyAnimator__u5B9E_u73B0_u52A8_u753B"><a href="#4-__u901A_u8FC7_ViewPropertyAnimator__u5B9E_u73B0_u52A8_u753B" class="headerlink" title="4. 通过 ViewPropertyAnimator 实现动画"></a>4. 通过 ViewPropertyAnimator 实现动画</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mView.animate().translationX(<span class="number">100f</span>).alpha(<span class="number">0</span>).setListener(<span class="keyword">new</span> AnimatorListenerAdapter() &#123;  </span><br><span class="line">    <span class="annotation">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animator animator)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">final</span> Button button = (Button) findViewById(R.id.buttonViewPropAnimator);  </span><br><span class="line">        button.animate().alpha(<span class="number">1</span>).translationX(<span class="number">0f</span>).start();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+<h2 id="4-_u53C2_u8003_u8D44_u6599"><a href="#4-_u53C2_u8003_u8D44_u6599" class="headerlink" title="4.参考资料"></a>4.参考资料</h2><ul>
+<li><a href="http://blog.csdn.net/linmiansheng/article/details/18676845" target="_blank" rel="external">http://blog.csdn.net/linmiansheng/article/details/18676845</a></li>
+</ul>
 
       </div>
       <footer class="article-footer">
-        <a data-url="http://rysinal.github.io/2016/01/10/Property Animation（属性动画）01篇 ObjectAnimator 动画类/" data-id="cij8hqceh000er8jrx4hrtmwm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+        <a data-url="http://rysinal.github.io/2016/01/10/Property Animation（属性动画）01篇 ObjectAnimator 动画类/" data-id="cij8i2crs000evgjrp8dwho00" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
