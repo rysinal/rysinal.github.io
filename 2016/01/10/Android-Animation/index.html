@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android-Animation | 会飞的鱼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="动画">
+  
+
+  <meta name="description" content="Android 中的动画之View Animation（视图动画）概述在Android系统中，提供了两种动画框架，视图动画和属性动画：
+
+View Animation（视图动画），而View Animation 里面又包含了下面两种模式：
+
+
+
+Tween Animation （渐变动画，也称之为View Animation，狭义的，不过现在官方也将之为View Animation了）,通过对特定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-Animation">
+<meta property="og:url" content="http://rysinal.github.io/2016/01/10/Android-Animation/index.html">
+<meta property="og:site_name" content="会飞的鱼">
+<meta property="og:description" content="Android 中的动画之View Animation（视图动画）概述在Android系统中，提供了两种动画框架，视图动画和属性动画：
+
+View Animation（视图动画），而View Animation 里面又包含了下面两种模式：
+
+
+
+Tween Animation （渐变动画，也称之为View Animation，狭义的，不过现在官方也将之为View Animation了）,通过对特定">
+<meta property="og:image" content="http://i4.tietuku.com/471264b04bca0abf.png">
+<meta property="og:updated_time" content="2016-01-10T09:59:32.100Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-Animation">
+<meta name="twitter:description" content="Android 中的动画之View Animation（视图动画）概述在Android系统中，提供了两种动画框架，视图动画和属性动画：
+
+View Animation（视图动画），而View Animation 里面又包含了下面两种模式：
+
+
+
+Tween Animation （渐变动画，也称之为View Animation，狭义的，不过现在官方也将之为View Animation了）,通过对特定">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css" type="text/css">
+  
+  
+
+
+  
+
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Inspire and empower.</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">主页</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about/index.html">关于</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                
+                  <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://rysinal.github.io"></form>
+                
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Android/">Android</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Android-Animation" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Android-Animation
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2016/01/10/Android-Animation/" class="article-date">
+  <time datetime="2016-01-10T08:54:24.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p><img src="http://i4.tietuku.com/471264b04bca0abf.png" alt=""></p>
+<h1 id="Android__u4E2D_u7684_u52A8_u753B_u4E4BView_Animation_uFF08_u89C6_u56FE_u52A8_u753B_uFF09"><a href="#Android__u4E2D_u7684_u52A8_u753B_u4E4BView_Animation_uFF08_u89C6_u56FE_u52A8_u753B_uFF09" class="headerlink" title="Android 中的动画之View Animation（视图动画）"></a>Android 中的动画之View Animation（视图动画）</h1><h2 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h2><p>在Android系统中，提供了两种动画框架，视图动画和属性动画：</p>
+<ul>
+<li>View Animation（视图动画），而View Animation 里面又包含了下面两种模式：</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>Tween Animation （渐变动画，也称之为View Animation，狭义的，不过现在官方也将之为View Animation了）,通过对特定的对象做图像变换如平移、缩放、旋转、淡出/淡入等产生动画效果.</p>
+</li>
+<li><p>Frame Animation （帧动画，也称之为Drawable Animation）,创建一个Drawable序列，这些Drawable可以按照指定的时间间隔一个一个的显示，也就是顺序播放事先做好的图像.</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>Property Animation（属性动画），顾名思义就是通过动画的方式改变对象的属性，这是在Android 3.0（API Level 11）之后才支持的框架,因为 View Animation 使用有一定的局限性，比如：你希望View有一个颜色的切换动画；你希望可以使用3D旋转动画；你希望当动画停止时，View的位置就是当前的位置；这些View Animation都无法做到，而属性动画则可以改变View的实际位置。这就是Property Animation产生的原因。</li>
+</ul>
+<p>所以，不考虑层次，只考虑实现，Android中就存在以下三种动画框架：</p>
+<blockquote>
+<ul>
+<li><p>View Animation</p>
+</li>
+<li><p>Drawable Animation</p>
+</li>
+<li><p>Property Animation</p>
+</li>
+</ul>
+</blockquote>
+<p>今天我们就来讲一下View Animation（Tween Animation）的用法，然后最后总结一下关于View Animation 的优缺点。</p>
+<p>简单地说，View Animation提供了一些在View上简单的动画效果，包括Tranlsate（平移），Rotate（旋转），Scale（缩放）和 Alpha（透明）这几种动画效果。</p>
+<h2 id="View_Animation_u52A8_u753B__u4ECB_u7ECD"><a href="#View_Animation_u52A8_u753B__u4ECB_u7ECD" class="headerlink" title="View Animation动画 介绍"></a>View Animation动画 介绍</h2><h3 id="1-_Tween_Animation_u67094_u79CD_u6837_u5F0F_uFF1A"><a href="#1-_Tween_Animation_u67094_u79CD_u6837_u5F0F_uFF1A" class="headerlink" title="1. Tween Animation有4种样式："></a>1. Tween Animation有4种样式：</h3><blockquote>
+<ul>
+<li><p>Alpha：渐变透明度动画效果</p>
+</li>
+<li><p>Scale：渐变尺寸伸缩动画效果</p>
+</li>
+<li><p>Translate：移动动画效果</p>
+</li>
+<li><p>Rotate：旋转动画效果</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="2-_Tween_Animation_u6709_2_u79CD_u4F7F_u7528_u65B9_u6CD5_uFF1A"><a href="#2-_Tween_Animation_u6709_2_u79CD_u4F7F_u7528_u65B9_u6CD5_uFF1A" class="headerlink" title="2. Tween Animation有 2种使用方法："></a>2. Tween Animation有 2种使用方法：</h3><p>a、在XML资源中定义Animation，使用AnimationUtils中的loadAnimation()函数加载动画；</p>
+<p>b、使用Animation子类的构造函数来初始化Animation对象。</p>
+<h2 id="View_Animation_u52A8_u753B__u4F7F_u7528"><a href="#View_Animation_u52A8_u753B__u4F7F_u7528" class="headerlink" title="View Animation动画 使用"></a>View Animation动画 使用</h2><h3 id="1-__u5728XML_u8D44_u6E90_u4E2D_u5B9A_u4E49Animation_uFF1A"><a href="#1-__u5728XML_u8D44_u6E90_u4E2D_u5B9A_u4E49Animation_uFF1A" class="headerlink" title="1. 在XML资源中定义Animation："></a>1. 在XML资源中定义Animation：</h3><p>首先我们要先在 res/amin/中创建一个定义动画的xml文件，就叫transform.xml吧（这里要注意，关于View Animation的动画效果，都是要放在 /res/anim 路径下的） 代码如下：</p>
+<p>Alpha 渐变透明度动画效果：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">alpha</span> <span class="attribute">android:interpolator</span>= “@<span class="attribute">android:anim</span>/<span class="attribute">accelerate_decelerate_interpolator</span>”</span><br><span class="line"><span class="attribute">android:fromAlpha</span>=<span class="value">"1.0"</span></span><br><span class="line"><span class="attribute">android:toAlpha</span>=<span class="value">"0.0"</span></span><br><span class="line"><span class="attribute">android:duration</span>=<span class="value">"3000"</span> &gt;</span><span class="tag">&lt;/<span class="title">alpha</span>&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- </span><br><span class="line">interpolator:指定一个动画的插入器，用来控制动画的速度变化  </span><br><span class="line">fromAlpha:动画起始时透明度</span><br><span class="line">          0.0表示完全透明</span><br><span class="line">          1.0表示完全不透明</span><br><span class="line">          以上值取0.0-1.0之间的float数据类型的数字</span><br><span class="line">toAlpha:动画结束时透明度</span><br><span class="line">duration:持续时间 </span><br><span class="line">--&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Scale：渐变尺寸伸缩动画效果</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">scale</span> <span class="attribute">android:interpolator</span>= “@<span class="attribute">android:anim</span>/<span class="attribute">accelerate_decelerate_interpolator</span>”</span><br><span class="line">	<span class="attribute">android:fromXScale</span>=<span class="value">”0.0″</span></span><br><span class="line">	<span class="attribute">android:toXScale</span>=<span class="value">”1.4″</span></span><br><span class="line">	<span class="attribute">android:fromYScale</span>=<span class="value">”0.0″</span></span><br><span class="line">	<span class="attribute">android:toYScale</span>=<span class="value">”1.4″</span></span><br><span class="line">	<span class="attribute">android:pivotX</span>=<span class="value">”50%”</span></span><br><span class="line">	<span class="attribute">android:pivotY</span>=<span class="value">”50%”</span></span><br><span class="line">	<span class="attribute">android:fillAfter</span>=<span class="value">”false”</span></span><br><span class="line">	<span class="attribute">android:startOffset</span>=<span class="value">“700”</span></span><br><span class="line">	<span class="attribute">android:duration</span>=<span class="value">”700″</span></span><br><span class="line">	<span class="attribute">android:repeatCount</span>=<span class="value">”10″</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--  </span><br><span class="line">fromXScale[float]:为动画起始时，X坐标上的伸缩尺寸,0.0表示收缩到没有</span><br><span class="line">fromYScale[float]:为动画起始时，Y坐标上的伸缩尺寸,0.0表示收缩到没有</span><br><span class="line">toXScale[float]:为动画结束时，X坐标上的伸缩尺寸</span><br><span class="line">toYScale[float]:为动画结束时，X坐标上的伸缩尺寸</span><br><span class="line"></span><br><span class="line">1.0表示正常无伸缩</span><br><span class="line">值小于1.0表示收缩</span><br><span class="line">值大于1.0表示放大</span><br><span class="line"></span><br><span class="line">pivotX[float]:为动画相对于物件的X坐标的开始位置</span><br><span class="line">pivotY[float]:为动画相对于物件的X、Y坐标的开始位置	</span><br><span class="line">		50,50%，50%p。这三种写法就分别代表了ABSOLUTE，RELATIVE_TO_SELF和RELATIVE_TO_PARENT。 </span><br><span class="line">		属性值说明：从0%-100%中取值，50%为物件的X或Y方向坐标上的中点位置</span><br><span class="line">fillAfter[boolean]:当设置为true ，该动画转化在动画结束后被应用</span><br><span class="line">startOffset[long]:动画之间的时间间隔，从上次动画停多少时间开始执行下个动画</span><br><span class="line">repeatCount[int]:动画的重复次数 </span><br><span class="line">--&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Translate：移动动画效果</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">translate</span></span><br><span class="line">    <span class="attribute">android:interpolator</span>=<span class="value">”@android:anim</span>/<span class="attribute">accelerate_decelerate_interpolator</span>”</span><br><span class="line">	<span class="attribute">android:fromXDelta</span>=<span class="value">”30″</span></span><br><span class="line">	<span class="attribute">android:toXDelta</span>=<span class="value">”-80″</span></span><br><span class="line">	<span class="attribute">android:fromYDelta</span>=<span class="value">”30″</span></span><br><span class="line">	<span class="attribute">android:toYDelta</span>=<span class="value">”300″</span></span><br><span class="line">	<span class="attribute">android:duration</span>=<span class="value">”2000″</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 		</span><br><span class="line">fromXDelta:为动画起始时 X坐标上的位置	</span><br><span class="line">toXDelta: 为动画结束时 X坐标上的位置	  </span><br><span class="line">fromYDelta: 为动画起始时 Y坐标上的位置</span><br><span class="line">toYDelta:为动画结束时 Y坐标上的位置 </span><br><span class="line">--&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Rotate：旋转动画效果</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">rotate</span></span><br><span class="line">	<span class="attribute">android:interpolator</span>=<span class="value">”@android:anim</span>/<span class="attribute">accelerate_decelerate_interpolator</span>”</span><br><span class="line">	<span class="attribute">android:fromDegrees</span>=<span class="value">”0″</span></span><br><span class="line">	<span class="attribute">android:toDegrees</span>=<span class="value">”+350″</span></span><br><span class="line">	<span class="attribute">android:pivotX</span>=<span class="value">”50%”</span></span><br><span class="line">	<span class="attribute">android:pivotY</span>=<span class="value">”50%”</span></span><br><span class="line">	<span class="attribute">android:duration</span>=<span class="value">”3000″</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 		</span><br><span class="line">fromDegrees:动画起始时物件的角度</span><br><span class="line">toDegrees:动画结束时物件旋转的角度 可以大于360度</span><br><span class="line">			当角度为负数——表示逆时针旋转</span><br><span class="line">			当角度为正数——表示顺时针旋转</span><br><span class="line">			(负数from——to正数:顺时针旋转)</span><br><span class="line">			(负数from——to负数:逆时针旋转)</span><br><span class="line">			(正数from——to正数:顺时针旋转)</span><br><span class="line">			(正数from——to负数:逆时针旋转)</span><br><span class="line"></span><br><span class="line">pivotX；:为动画相对于物件的X、Y坐标的开始位置</span><br><span class="line">pivotY: 为动画相对于物件的X、Y坐标的开始位置</span><br><span class="line">			50%为物件的X或Y方向坐标上的中点位置 --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>共有的属性:</p>
+<p>每个动画我们都必须设置通过Duration来设置其时长，不然的话，没有时间，谈何动呢。</p>
+<p>duration：动画的时长 </p>
+<p>而 repeatCount 和 repeatMode 等则不是必须的，但可以应用到每个动画效果上。</p>
+<p>repeatCount：重复的次数</p>
+<p>repeatMode：reverse (从结束位置反过来进行动画)，restart（在开始位置重新开始动画）。</p>
+<p>fillAfter ：当为true的时候，动画会停在结束的那一刻。<br>fillBefore：当为true的时候，动画结束后，当前View会停留在开始的那一刻。</p>
+<p>等等等，就不多说了。</p>
+<p><strong>然后在Java中调用 xml：</strong></p>
+<p>当把这些参数都定义好之后，那么就可以在Java中调用我们定义好的这个动画文件了，具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把定义的动画效果通过 AnimationUtils.loadAnimation这个方法拿出来</span></span><br><span class="line">Animation animation1 = AnimationUtils.loadAnimation(MainActivity.<span class="keyword">this</span>,R.anim.transform1);  </span><br><span class="line">Animation animation2 = AnimationUtils.loadAnimation(MainActivity.<span class="keyword">this</span>,R.anim.transform2);  </span><br><span class="line">Animation animation3 = AnimationUtils.loadAnimation(MainActivity.<span class="keyword">this</span>,R.anim.transform3);  </span><br><span class="line">Animation animation4 = AnimationUtils.loadAnimation(MainActivity.<span class="keyword">this</span>,R.anim.transform4);</span><br></pre></td></tr></table></figure>
+<p>通过view的startAnimation函数，将animation设置给view，并开始运行:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置一个动画执行的启动时间，单位为毫秒,当使用该方法设置后，将延迟一定的时间再启动动画。</span></span><br><span class="line">animation1.setStartOffset(<span class="number">0</span>);  </span><br><span class="line"><span class="comment">//执行动画</span></span><br><span class="line">view.startAnimation(animation1);</span><br></pre></td></tr></table></figure>
+<p>上面介绍的都是单一动画，当要将各种效果同时进行，或者按顺序来进行，我们可以通过定义Set，来实现这个效果,比如旋转和缩放一起：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">set</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>  </span><br><span class="line">    <span class="attribute">android:fillAfter</span>=<span class="value">"true"</span> &gt;</span>  </span><br><span class="line">  </span><br><span class="line">    <span class="tag">&lt;<span class="title">rotate</span>  </span><br><span class="line">        <span class="attribute">android:duration</span>=<span class="value">"2000"</span>  </span><br><span class="line">        <span class="attribute">android:fromDegrees</span>=<span class="value">"-180"</span>  </span><br><span class="line">        <span class="attribute">android:pivotX</span>=<span class="value">"50%"</span>  </span><br><span class="line">        <span class="attribute">android:pivotY</span>=<span class="value">"50%"</span>  </span><br><span class="line">        <span class="attribute">android:toDegrees</span>=<span class="value">"0"</span> /&gt;</span>  </span><br><span class="line">  </span><br><span class="line">    <span class="tag">&lt;<span class="title">scale</span>  </span><br><span class="line">        <span class="attribute">android:duration</span>=<span class="value">"2000"</span>  </span><br><span class="line">        <span class="attribute">android:fromXScale</span>=<span class="value">"0.5"</span>  </span><br><span class="line">        <span class="attribute">android:fromYScale</span>=<span class="value">"0.5"</span>  </span><br><span class="line">        <span class="attribute">android:pivotX</span>=<span class="value">"50%"</span>  </span><br><span class="line">        <span class="attribute">android:pivotY</span>=<span class="value">"50%"</span>  </span><br><span class="line">        <span class="attribute">android:toXScale</span>=<span class="value">"2.0"</span>  </span><br><span class="line">        <span class="attribute">android:startOffset</span>=<span class="value">"2000"</span>  </span><br><span class="line">        <span class="attribute">android:toYScale</span>=<span class="value">"2.0"</span> /&gt;</span>  </span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="title">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>而在Java中，调用方法是一样的。在上面的xml-set文件设置中，每个动画效果都有一个startOffset参数，是设置动画开始的偏移量的，如果我们要动画顺序执行，那我们就必须设置各个效果的偏移时间，如上面，rotate是马上执行的，而scale效果会在2秒后才执行，刚好在rotate效果执行之后。</p>
+<h3 id="2-_Java_u4E2D_u5B9A_u4E49_u52A8_u753B"><a href="#2-_Java_u4E2D_u5B9A_u4E49_u52A8_u753B" class="headerlink" title="2. Java中定义动画"></a>2. Java中定义动画</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Animation animation1 = <span class="keyword">new</span> ScaleAnimation(<span class="number">1.0f</span>, <span class="number">0.5f</span>, <span class="number">1.0f</span>, <span class="number">0.5f</span>,<span class="number">50</span>,<span class="number">50</span>); <span class="comment">//Scale Animation  </span></span><br><span class="line">animation1.setDuration(DURATION);  </span><br><span class="line">animation1.setRepeatCount(<span class="number">1</span>);  </span><br><span class="line">animation1.setInterpolator(interpolator);  </span><br><span class="line">animation1.setRepeatMode(Animation.REVERSE);  </span><br><span class="line">  </span><br><span class="line">Animation animation2 = <span class="keyword">new</span> RotateAnimation(<span class="number">0</span>, <span class="number">180</span>, <span class="number">50</span>, <span class="number">50</span>); <span class="comment">//Rotate Animation  </span></span><br><span class="line">animation2.setDuration(DURATION);             </span><br><span class="line">animation2.setRepeatCount(<span class="number">1</span>);  </span><br><span class="line">animation2.setInterpolator(interpolator);  </span><br><span class="line">animation2.setRepeatMode(Animation.REVERSE);  </span><br><span class="line">  </span><br><span class="line">Animation animation3 = <span class="keyword">new</span> TranslateAnimation(<span class="number">0</span>, <span class="number">100</span>, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">//Translate Animation  </span></span><br><span class="line">animation3.setDuration(DURATION);             </span><br><span class="line">animation3.setRepeatCount(<span class="number">1</span>);  </span><br><span class="line">animation3.setInterpolator(interpolator);  </span><br><span class="line">animation3.setRepeatMode(Animation.REVERSE);  </span><br><span class="line">  </span><br><span class="line">Animation animation4 = <span class="keyword">new</span> AlphaAnimation(<span class="number">1.0f</span>, <span class="number">0f</span>); <span class="comment">//Alpha Animation  </span></span><br><span class="line">animation4.setDuration(DURATION);             </span><br><span class="line">animation4.setRepeatCount(<span class="number">1</span>);  </span><br><span class="line">animation4.setInterpolator(interpolator);  </span><br><span class="line">animation4.setRepeatMode(Animation.REVERSE);  </span><br><span class="line">  </span><br><span class="line">AnimationSet animationSet = <span class="keyword">new</span> AnimationSet(<span class="keyword">false</span>);   <span class="comment">//Animation Set  </span></span><br><span class="line">animationSet.addAnimation(animation1);  </span><br><span class="line">animationSet.addAnimation(animation2);  </span><br><span class="line">animationSet.addAnimation(animation3);</span><br></pre></td></tr></table></figure>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>优点：</p>
+<ul>
+<li>如果不需要太复杂的效果， View Animation基本都能胜任。</li>
+<li>使用简单，上手容易</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>无法用在非view的身上，比如自定义的对象</li>
+<li>动画效果少，只有提供的旋转，平移，缩放和透明，无法实现其他的效果。</li>
+<li>没有移动实际view的位置，只是在界面重绘了View，该View的点击事件等响应依旧在移动前的位置。</li>
+</ul>
+<blockquote>
+<p>参考资料<br><a href="http://blog.csdn.net/linmiansheng/article/details/18676845" target="_blank" rel="external">http://blog.csdn.net/linmiansheng/article/details/18676845</a><br><a href="http://blog.csdn.net/johnsonblog/article/details/807097" target="_blank" rel="external">http://blog.csdn.net/johnsonblog/article/details/807097</a></p>
+</blockquote>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://rysinal.github.io/2016/01/10/Android-Animation/" data-id="cij8depov00000kjrksduj0uf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="weibo" href="http://weibo.com/gglamyuqing" target="_blank"><i class="icon fa fa-weibo"></i></a></li>
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/rysinal" target="_blank"><i class="icon fa fa-github"></i></a></li>
+      
+        <li><a class="social-tooltip" title="twitter" href="https://twitter.com/rysinal86" target="_blank"><i class="icon fa fa-twitter"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/" target="_blank"><i class="icon fa fa-rss"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/09/hexo命令使用说明/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">hexo命令使用说明</p>
+      <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2016/01/10/Android-Animation/" class="thumbnail">
+  
+    <span style="background-image:url(http://i4.tietuku.com/471264b04bca0abf.png
+)" alt="Android-Animation" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/10/Android-Animation/" class="title">Android-Animation</a></p>
+              <p class="item-date"><time datetime="2016-01-10T08:54:24.000Z" itemprop="datePublished">2016-01-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2016/01/09/hexo命令使用说明/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2016/01/09/hexo命令使用说明/" class="title">hexo命令使用说明</a></p>
+              <p class="item-date"><time datetime="2016-01-08T17:34:02.000Z" itemprop="datePublished">2016-01-09</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2016/01/09/hello-world/" class="thumbnail">
+  
+    <span style="background-image:url(http://i4.tietuku.com/16fe4d932dfcc0fa.png
+)" alt="Hello World" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/09/hello-world/" class="title">Hello World</a></p>
+              <p class="item-date"><time datetime="2016-01-08T16:12:56.885Z" itemprop="datePublished">2016-01-09</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">null</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2016 Rysinal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
+  <script src="/scrollLoading/main.js" type="text/javascript"></script>
+
+
+
+
+<script src="/js/html-patch.js" type="text/javascript"></script>
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

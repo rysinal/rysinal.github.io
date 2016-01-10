@@ -132,8 +132,11 @@
 打开之后我们会看到：
 =========================
 title: new article 
+
 date: 2014-11-01 20:10:33 
+
 tags: 
+
 categories:
 
 =========================
@@ -141,21 +144,35 @@ categories:
 文章的正文支持markdown格式，建议你先学习一下它的语法。markdown不像html似的一大堆标签，很简单，只有几个符号。
 新建、删除或修改文章后，不需要重启hexo server，刷新一下即可预览。
 属性文章可以拥有如下属性：
-1Setting Description Default&#10;&#10;layout    Layout    post&#25110;page    &#10;&#10;title    &#25991;&#31456;&#30340;&#26631;&#39064;    &#10;&#10;date    &#21019;&#24314;&#26085;&#26399;    &#25991;&#20214;&#30340;&#21019;&#24314;&#26085;&#26399;    &#10;&#10;updated    &#20462;&#25913;&#26085;&#26399;    &#25991;&#20214;&#30340;&#20462;&#25913;&#26085;&#26399;    &#10;&#10;comments    &#26159;&#21542;&#24320;&#21551;&#35780;&#35770;    true    &#10;&#10;tags    &#26631;&#31614;    &#10;&#10;categories    &#20998;&#31867;    &#10;&#10;permalink    url&#20013;&#30340;&#21517;&#23383;    &#25991;&#20214;&#21517;
+Setting Description Default
+
+layout    Layout    post或page    
+
+title    文章的标题    
+
+date    创建日期    文件的创建日期    
+
+updated    修改日期    文件的修改日期    
+
+comments    是否开启评论    true    
+
+tags    标签    
+
+categories    分类    
+
+permalink    url中的名字    文件名    
 动态博客中通过发布文章页面设置的各种属性，在hexo里要这样设置。
 分类和标签例如：
 ===========
 categories: 
 
-日记 
+- 日记 
 
 tags: 
 
-Hexo 
+- Hexo 
 
-node.js
-
-
+- node.js
 ===========
 摘要同wordpress一样，
       </p>
@@ -236,6 +253,26 @@ Quic
             
             <div class="item-thumbnail">
               
+<a href="/2016/01/10/Android-Animation/" class="thumbnail">
+  
+    <span style="background-image:url(http://i4.tietuku.com/471264b04bca0abf.png
+)" alt="Android-Animation" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/10/Android-Animation/" class="title">Android-Animation</a></p>
+              <p class="item-date"><time datetime="2016-01-10T08:54:24.000Z" itemprop="datePublished">2016-01-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
 <a href="/2016/01/09/hexo命令使用说明/" class="thumbnail">
   
     <span class="thumbnail-image thumbnail-none"></span>
@@ -280,7 +317,7 @@ Quic
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -290,7 +327,7 @@ Quic
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -300,7 +337,7 @@ Quic
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -310,7 +347,7 @@ Quic
   <div class="widget-wrap widget-float">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a>
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a>
     </div>
   </div>
 
