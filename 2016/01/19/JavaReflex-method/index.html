@@ -3,26 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | 会飞的鱼</title>
+  <title>Java反射-方法介绍 | 会飞的鱼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Hexo,node.js">
+  <meta name="keywords" content="反射">
   
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="介绍JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
+原理JAVA反射机制：“程序运行时，允许改变程序结构或变量类型，这种语言称为动态语言”。从这个观点看，Perl，Python，Ruby是动态语言，C++，Java，C#不是动态语言。但是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://rysinal.github.io/2016/01/09/hello-world/index.html">
+<meta property="og:title" content="Java反射-方法介绍">
+<meta property="og:url" content="http://rysinal.github.io/2016/01/19/JavaReflex-method/index.html">
 <meta property="og:site_name" content="会飞的鱼">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:image" content="http://i4.tietuku.com/16fe4d932dfcc0fa.png">
-<meta property="og:updated_time" content="2016-01-08T16:12:56.885Z">
+<meta property="og:description" content="介绍JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
+原理JAVA反射机制：“程序运行时，允许改变程序结构或变量类型，这种语言称为动态语言”。从这个观点看，Perl，Python，Ruby是动态语言，C++，Java，C#不是动态语言。但是">
+<meta property="og:updated_time" content="2016-01-19T05:59:31.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Java反射-方法介绍">
+<meta name="twitter:description" content="介绍JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
+原理JAVA反射机制：“程序运行时，允许改变程序结构或变量类型，这种语言称为动态语言”。从这个观点看，Perl，Python，Ruby是动态语言，C++，Java，C#不是动态语言。但是">
   
   
     <link rel="icon" href="/favicon.png">
@@ -98,7 +97,7 @@ Quick">
             </div>
             <div class="main-body-content">
               
-  <article id="post-hello-world" class="article article-single article-type-post" itemscope itemprop="blogPost">
+  <article id="post-JavaReflex-method" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
       <!--  -->
       
@@ -106,35 +105,36 @@ Quick">
           
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Java反射-方法介绍
     </h1>
   
 
         </header>
       
       <p class="article-byline">
-        <a href="/2016/01/09/hello-world/" class="article-date">
-  <time datetime="2016-01-08T16:12:56.885Z" itemprop="datePublished">2016-01-09</time>
+        <a href="/2016/01/19/JavaReflex-method/" class="article-date">
+  <time datetime="2016-01-19T00:50:25.000Z" itemprop="datePublished">2016-01-19</time>
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <p><img src="http://i4.tietuku.com/16fe4d932dfcc0fa.png" alt=""></p>
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <h1 id="u4ECB_u7ECD"><a href="#u4ECB_u7ECD" class="headerlink" title="介绍"></a>介绍</h1><p>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。</p>
+<h1 id="u539F_u7406"><a href="#u539F_u7406" class="headerlink" title="原理"></a>原理</h1><p>JAVA反射机制：“程序运行时，允许改变程序结构或变量类型，这种语言称为动态语言”。从这个观点看，Perl，Python，Ruby是动态语言，C++，Java，C#不是动态语言。但是JAVA有着一个非常突出的动态相关机制：Reflection，用在Java身上指的是我们可以于运行时加载、探知、使用编译期间完全未知的classes。换句话说，Java程序可以加载一个运行时才得知名称的class，获悉其完整构造（但不包括methods定义），并生成其对象实体、或对其fields设值、或唤起其methods。</p>
+<p>众所周知Java有个Object 类，是所有Java 类的继承根源，其内声明了数个应该在所有Java 类中被改写的方法：hashCode()、equals()、clone()、toString()、getClass()等。其中getClass()返回一个Class 对象。Class对象十分特殊。他是Java中所有类的实例，借助它可以实现对一个对象的操作。</p>
+<h1 id="u5B9E_u4F8B"><a href="#u5B9E_u4F8B" class="headerlink" title="实例"></a>实例</h1><h2 id="1-__u5B9E_u4F53_u7C7B"><a href="#1-__u5B9E_u4F53_u7C7B" class="headerlink" title="1. 实体类"></a>1. 实体类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">shot</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"!!!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">shot1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"111"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(String age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-__u521B_u5EFAclass_u5BF9_u8C61"><a href="#2-__u521B_u5EFAclass_u5BF9_u8C61" class="headerlink" title="2. 创建class对象"></a>2. 创建class对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person person = <span class="keyword">new</span> Person;</span><br><span class="line">Class&lt;?&gt; class1 = Class.forName(<span class="string">"test.test.Person"</span>); <span class="comment">//类所在的包名</span></span><br><span class="line">Class&lt;?&gt; class2 = person.getClass;</span><br><span class="line">Class&lt;?&gt; class3 = Person.class;</span><br></pre></td></tr></table></figure>
+<h2 id="3-__u5BF9_u5BF9_u8C61_u5C5E_u6027_u8FDB_u884C_u64CD_u4F5C"><a href="#3-__u5BF9_u5BF9_u8C61_u5C5E_u6027_u8FDB_u884C_u64CD_u4F5C" class="headerlink" title="3. 对对象属性进行操作"></a>3. 对对象属性进行操作</h2><h3 id="1-__u83B7_u53D6_u7C7B_u7684_u5C5E_u6027"><a href="#1-__u83B7_u53D6_u7C7B_u7684_u5C5E_u6027" class="headerlink" title="1. 获取类的属性"></a>1. 获取类的属性</h3><ul>
+<li>getFields只能访问类中声明为公有的字段,私有的字段它无法访问，能访问从其它类继承来的公有方法</li>
+<li>getDeclaredFields能访问类中所有的字段,与public,private,protect无关，不能访问从其它类继承来的方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Field fields = class1.getDeclaredFields;</span><br><span class="line">Field fields2 = class1.getFields;</span><br><span class="line"><span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">    System.out.println(Modifier.toString(field.getModifiers) + field.getName);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(Field field:fields2)&#123;</span><br><span class="line">    System.out.println(Modifier.toString(field.getModifiers)+field.getName);<span class="comment">//由于Person类中并没有公有字段，所以该循环不输出任何值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+<p><strong>输出结果：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privatename</span><br><span class="line">privateage</span><br></pre></td></tr></table></figure>
       </div>
       <footer class="article-footer">
-        <a data-url="http://rysinal.github.io/2016/01/09/hello-world/" data-id="cijkzrdh9000azcjr34r9hslf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+        <a data-url="http://rysinal.github.io/2016/01/19/JavaReflex-method/" data-id="cijkzrdgd0000zcjrfeluq7kt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
         
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/反射/">反射</a></li></ul>
 
       </footer>
     </div>
@@ -164,16 +164,12 @@ Quick">
     
 <nav id="article-nav">
   
-    <a href="/2016/01/09/hexo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <p class="article-nav-title">
-        
-          hexo命令使用说明
-        
-      </p>
-      <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
   
+    <a href="/2016/01/10/Property-Animation-01-ObjectAnimator/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">Property Animation（属性动画）01篇 ObjectAnimator 动画类</p>
+      <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+    </a>
   
 </nav>
 
