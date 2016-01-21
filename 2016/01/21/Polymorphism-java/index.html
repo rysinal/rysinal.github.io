@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java中的多态简单介绍 | 会飞的鱼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="多态">
+  
+
+  <meta name="description" content="多态的概念面向对象的技术特征是：
+
+封装(wrap)
+继承(inheritance)
+重载(override)
+多态(polymorphism)
+
+当然最能体现这种特征的就是今天的主角- 多态。
+多态存在的三个必要条件
+
+要有继承
+要有重写
+父类引用指向子类对象
+
+多态是具有表现多种形态的能力的特征，可以理解成 多态即‘泛型’，我们可以对不同类型的对象进行通用的方式展现，将未知的对象在已有的框架中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中的多态简单介绍">
+<meta property="og:url" content="http://rysinal.github.io/2016/01/21/Polymorphism-java/index.html">
+<meta property="og:site_name" content="会飞的鱼">
+<meta property="og:description" content="多态的概念面向对象的技术特征是：
+
+封装(wrap)
+继承(inheritance)
+重载(override)
+多态(polymorphism)
+
+当然最能体现这种特征的就是今天的主角- 多态。
+多态存在的三个必要条件
+
+要有继承
+要有重写
+父类引用指向子类对象
+
+多态是具有表现多种形态的能力的特征，可以理解成 多态即‘泛型’，我们可以对不同类型的对象进行通用的方式展现，将未知的对象在已有的框架中">
+<meta property="og:updated_time" content="2016-01-21T09:56:19.803Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中的多态简单介绍">
+<meta name="twitter:description" content="多态的概念面向对象的技术特征是：
+
+封装(wrap)
+继承(inheritance)
+重载(override)
+多态(polymorphism)
+
+当然最能体现这种特征的就是今天的主角- 多态。
+多态存在的三个必要条件
+
+要有继承
+要有重写
+父类引用指向子类对象
+
+多态是具有表现多种形态的能力的特征，可以理解成 多态即‘泛型’，我们可以对不同类型的对象进行通用的方式展现，将未知的对象在已有的框架中">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css" type="text/css">
+  
+  
+
+
+  
+
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Inspire and empower.</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">主页</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about/index.html">关于</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                
+                  <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://rysinal.github.io"></form>
+                
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Android/">Android</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Polymorphism-java" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Java中的多态简单介绍
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2016/01/21/Polymorphism-java/" class="article-date">
+  <time datetime="2016-01-21T09:12:49.000Z" itemprop="datePublished">2016-01-21</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="u591A_u6001_u7684_u6982_u5FF5"><a href="#u591A_u6001_u7684_u6982_u5FF5" class="headerlink" title="多态的概念"></a>多态的概念</h1><p>面向对象的技术特征是：</p>
+<ul>
+<li>封装(wrap)</li>
+<li>继承(inheritance)</li>
+<li>重载(override)</li>
+<li>多态(polymorphism)</li>
+</ul>
+<p>当然最能体现这种特征的就是今天的主角- <strong>多态</strong>。</p>
+<p>多态存在的三个必要条件</p>
+<ol>
+<li>要有继承</li>
+<li>要有重写</li>
+<li>父类引用指向子类对象</li>
+</ol>
+<p>多态是具有表现多种形态的能力的特征，可以理解成 多态即‘泛型’，我们可以对不同类型的对象进行<strong>通用</strong>的方式展现，将未知的对象在已有的框架中表现，即多态==晚绑定。我们都知道继承是子类调用父类方法，多态则是父类型的引用可以指向子类型的对象或者接口类型的引用可以指向实现该接口的类的实例。</p>
+<h1 id="u4E3A_u4EC0_u4E48_u8981_u4F7F_u7528_u591A_u6001"><a href="#u4E3A_u4EC0_u4E48_u8981_u4F7F_u7528_u591A_u6001" class="headerlink" title="为什么要使用多态"></a>为什么要使用多态</h1><h2 id="1-__u53EF_u66FF_u6362_u6027_uFF08substitutability_uFF09_u3002"><a href="#1-__u53EF_u66FF_u6362_u6027_uFF08substitutability_uFF09_u3002" class="headerlink" title="1. 可替换性（substitutability）。"></a>1. 可替换性（substitutability）。</h2><p>多态对已存在代码具有可替换性。例如，多态对圆Circle类工作，对其他任何圆形几何体，如圆环，也同样工作。</p>
+<h2 id="2-__u53EF_u6269_u5145_u6027_uFF08extensibility_uFF09_u3002"><a href="#2-__u53EF_u6269_u5145_u6027_uFF08extensibility_uFF09_u3002" class="headerlink" title="2. 可扩充性（extensibility）。"></a>2. 可扩充性（extensibility）。</h2><p>多态对代码具有可扩充性。增加新的子类不影响已存在类的多态性、继承性，以及其他特性的运行和操作。实际上新加子类更容易获得多态功能。例如，在实现了圆锥、半圆锥以及半球体的多态基础上，很容易增添球体类的多态性。</p>
+<h2 id="3-__u63A5_u53E3_u6027_uFF08interface-ability_uFF09_u3002"><a href="#3-__u63A5_u53E3_u6027_uFF08interface-ability_uFF09_u3002" class="headerlink" title="3. 接口性（interface-ability）。"></a>3. 接口性（interface-ability）。</h2><p>多态是超类通过方法签名，向子类提供了一个共同接口，由子类来完善或者覆盖它而实现的。</p>
+<h2 id="4-__u7075_u6D3B_u6027_uFF08flexibility_uFF09_u3002"><a href="#4-__u7075_u6D3B_u6027_uFF08flexibility_uFF09_u3002" class="headerlink" title="4. 灵活性（flexibility）。"></a>4. 灵活性（flexibility）。</h2><p>它在应用中体现了灵活多样的操作，提高了使用效率。</p>
+<h2 id="5-__u7B80_u5316_u6027_uFF08simplicity_uFF09_u3002"><a href="#5-__u7B80_u5316_u6027_uFF08simplicity_uFF09_u3002" class="headerlink" title="5. 简化性（simplicity）。"></a>5. 简化性（simplicity）。</h2><p>多态简化对应用软件的代码编写和修改过程，尤其在处理大量对象的运算和操作时，这个特点尤为突出和重要。</p>
+<h2 id="6-__u603B_u7ED3"><a href="#6-__u603B_u7ED3" class="headerlink" title="6. 总结"></a>6. 总结</h2><p>目前开发软件都在大量的使用框架，框架就是对某一类型的所有对象进行共性抽离，这样可以形成普遍适用的结构体，一是减少了时间，提高了效率，二是规范编码，通俗易懂，结构清晰。</p>
+<h1 id="u591A_u6001_u4F8B_u5B50"><a href="#u591A_u6001_u4F8B_u5B50" class="headerlink" title="多态例子"></a>多态例子</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Animal is singing!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Dog is singing!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Cat is singing!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Cat is eating!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//向上类型转换</span></span><br><span class="line">        Cat cat = <span class="keyword">new</span> Cat();</span><br><span class="line">        Animal animal = cat;</span><br><span class="line">        animal.sing();</span><br><span class="line"></span><br><span class="line">                </span><br><span class="line">        <span class="comment">//向下类型转换</span></span><br><span class="line">        Animal a = <span class="keyword">new</span> Cat();</span><br><span class="line">        Cat c = (Cat)a;</span><br><span class="line">        c.sing();</span><br><span class="line">        c.eat();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//编译错误</span></span><br><span class="line">        <span class="comment">//用父类引用调用父类不存在的方法</span></span><br><span class="line">        <span class="comment">//Animal a1 = new Cat();</span></span><br><span class="line">        <span class="comment">//a1.eat();</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//编译错误</span></span><br><span class="line">        <span class="comment">//向下类型转换时只能转向指向的对象类型        </span></span><br><span class="line">        <span class="comment">//Animal a2 = new Cat();</span></span><br><span class="line">        <span class="comment">//Cat c2 = (Dog)a2;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Cat is singing!</span><br><span class="line">Cat is singing!</span><br><span class="line">Cat is eating!</span><br></pre></td></tr></table></figure>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://rysinal.github.io/2016/01/21/Polymorphism-java/" data-id="cijo33d7d000ldojrefzl0p1r" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多态/">多态</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="weibo" href="http://weibo.com/gglamyuqing" target="_blank"><i class="icon fa fa-weibo"></i></a></li>
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/rysinal" target="_blank"><i class="icon fa fa-github"></i></a></li>
+      
+        <li><a class="social-tooltip" title="twitter" href="https://twitter.com/rysinal86" target="_blank"><i class="icon fa fa-twitter"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/" target="_blank"><i class="icon fa fa-rss"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/19/JavaReflex/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">Java反射-方法介绍</p>
+      <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2016/01/21/Polymorphism-java/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/21/Polymorphism-java/" class="title">Java中的多态简单介绍</a></p>
+              <p class="item-date"><time datetime="2016-01-21T09:12:49.000Z" itemprop="datePublished">2016-01-21</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2016/01/19/JavaReflex/" class="thumbnail">
+  
+    <span style="background-image:url(http://i4.tietuku.com/97ed28ef02348567.png
+)" alt="Java反射-方法介绍" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/19/JavaReflex/" class="title">Java反射-方法介绍</a></p>
+              <p class="item-date"><time datetime="2016-01-19T00:50:25.000Z" itemprop="datePublished">2016-01-19</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2016/01/10/Property-Animation-01-ObjectAnimator/" class="thumbnail">
+  
+    <span style="background-image:url(http://i4.tietuku.com/471264b04bca0abf.png
+)" alt="Property Animation（属性动画）01篇 ObjectAnimator 动画类" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/10/Property-Animation-01-ObjectAnimator/" class="title">Property Animation（属性动画）01篇 ObjectAnimator 动画类</a></p>
+              <p class="item-date"><time datetime="2016-01-10T10:27:26.000Z" itemprop="datePublished">2016-01-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2016/01/10/View-Animation/" class="thumbnail">
+  
+    <span style="background-image:url(http://i4.tietuku.com/471264b04bca0abf.png
+)" alt="Android-Animation之View Animation（视图动画）" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/10/View-Animation/" class="title">Android-Animation之View Animation（视图动画）</a></p>
+              <p class="item-date"><time datetime="2016-01-10T08:54:24.000Z" itemprop="datePublished">2016-01-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2016/01/09/hexo/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2016/01/09/hexo/" class="title">hexo命令使用说明</a></p>
+              <p class="item-date"><time datetime="2016-01-08T17:34:02.000Z" itemprop="datePublished">2016-01-09</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/反射/">反射</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多态/">多态</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/动画/" style="font-size: 20px;">动画</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/多态/" style="font-size: 10px;">多态</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">null</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2016 Rysinal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
+  <script src="/scrollLoading/main.js" type="text/javascript"></script>
+
+
+
+
+<script src="/js/html-patch.js" type="text/javascript"></script>
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
